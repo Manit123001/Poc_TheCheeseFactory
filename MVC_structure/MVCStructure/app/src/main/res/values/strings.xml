@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVCStructure</string>
+    <string name="settings">To Second Fragment</string>
+</resources>

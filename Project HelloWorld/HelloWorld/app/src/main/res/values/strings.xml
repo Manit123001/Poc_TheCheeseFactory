@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="calculate">Calculate</string>
+    <string name="i_agre">I agre</string>
+    <string name="settings">Settings</string>
+
+</resources>

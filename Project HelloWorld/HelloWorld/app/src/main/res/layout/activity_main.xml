@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mcnew.helloworld.MainActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--hind-->
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tvHello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <EditText
+                android:visibility="gone"
+                android:layout_width="384dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/editTextHello"
+                android:inputType="number"
+                android:layout_width="384dp"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btnCopy"
+                android:text="Copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--dev 1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="0dp"
+                    android:text="0"
+                    android:background="@drawable/ninepatch_lab"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="0dp"
+                    android:text="0"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:background="@drawable/ninepatch_lab"
+
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="0dp"
+                    android:text="0"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:freezesText="true"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="wrap_content"
+                android:text="@string/calculate"
+                android:textColor="@color/color_red"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/cbIAgree"
+                android:text="@string/i_agre"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/rgOperator"
+                android:orientation="horizontal"
+                android:checkedButton="@+id/rbPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rbPlus"
+                    android:text="+"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rbMinus"
+                    android:text="-"
+                    android:layout_marginLeft="@dimen/radio_button_margin_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rbMultiply"
+                    android:text="*"
+                    android:layout_marginLeft="@dimen/radio_button_margin_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rbDivide"
+                    android:text="/"
+                    android:layout_marginLeft="@dimen/radio_button_margin_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+            <ProgressBar
+                style="@style/ProgressBarStyle"
+                android:progress="33"
+                android:indeterminate="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include layout="@layout/sample_bar" />
+
+
+            <com.mcnew.helloworld.CustomViewGroup
+                android:id="@+id/viewGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.mcnew.helloworld.CustomViewGroup
+                android:id="@+id/viewGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_spotify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                fancy:fb_borderColor="#FFFFFF"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="#7ab800"
+                fancy:fb_focusColor="#9bd823"
+                fancy:fb_fontIconResource="&#xf04b;"
+                fancy:fb_iconPosition="left"
+                fancy:fb_radius="30dp"
+                fancy:fb_text="SHUFFLE PLAY"
+                fancy:fb_textColor="#FFFFFF" />
+
+
+            <com.mcnew.helloworld.CustomView
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
+            <com.mcnew.helloworld.CustomView
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                app:isBlue="true"
+                android:layout_height="160dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:layout_height="0dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageButton
+                    android:src="@drawable/ic_launcher"
+                    android:adjustViewBounds="true"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/selector_btn_default"
+                    android:layout_height="wrap_content" />
+
+                <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageButton
+                    android:src="@drawable/ic_launcher"
+                    android:adjustViewBounds="true"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:scaleType="fitXY"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
