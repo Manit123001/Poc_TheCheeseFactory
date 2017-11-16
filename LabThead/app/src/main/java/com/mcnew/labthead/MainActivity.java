@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     HandlerThread backgroundHandlerThread;
     Handler backgrounHandler;
     Handler mainHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         counter = 0;
         tvCounter = (TextView) findViewById(R.id.tvCounter);
 
-        // Thread Method 1: Thread
+        /**
+         * Thread Method 1: Thread (Not Use this thread)
+         **/
         /*-
         thread = new Thread(new Runnable() {
             @Override
@@ -53,9 +56,11 @@ public class MainActivity extends AppCompatActivity {
         });
         thread.start();
         -*/
-        // ใช้อันนี้
-        /*
-        // Thread Method 2 : Thread with Handler
+
+        /**
+         * Thread Method 2 : Thread with Handler (Use This Solution
+         **/
+        /*-
         handler = new Handler(Looper.getMainLooper()){
             @Override
             public void handleMessage(Message msg) {
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 // Run in background
                 for (int i = 0; i < 100; i++) {
                     counter ++;
@@ -77,16 +83,22 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
+                    // update ui
                     Message msg = new Message();
-                    msg.arg1 = counter;
-                    handler.sendMessage(msg);
+                    msg.arg1 = counter; // arg1, arg2, arg3, obj
+                    handler.sendMessage(msg); //send work to handle main thread
                 }
             }
         });
-        thread.start();*/
+        thread.start();
+        -*/
 
-        //Thread Method 3 : Handler Only
-      /*  handler = new Handler(Looper.getMainLooper()) {
+
+        /**
+         * Thread Method 3 : Handler Only (Work instand thread)
+         **/
+        /*-
+        handler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -97,18 +109,22 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        handler.sendEmptyMessageDelayed(0, 1000);*/
+        handler.sendEmptyMessageDelayed(0, 1000);
+        -*/
 
-        //Thread Method 4: HandlerThread
+
+        /**
+         * Thread Method 4: HandlerThread (2 3 combined)
+         **/
         backgroundHandlerThread = new HandlerThread("BackgrondHandlerThread");
         backgroundHandlerThread.start();
 
         backgrounHandler = new Handler(backgroundHandlerThread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
-
                 super.handleMessage(msg);
                 // Run with background
+
                 Message msgMain = new Message();
                 msgMain.arg1 = msg.arg1 + 1;
                 mainHandler.sendMessage(msgMain);
@@ -116,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        mainHandler = new Handler((Looper.getMainLooper())){
+        mainHandler = new Handler((Looper.getMainLooper())) {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -130,11 +146,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        Message msgBack =new Message();
-        msgBack.arg1 = 0 ;// Start count at 0
+        // start here
+        Message msgBack = new Message();
+        msgBack.arg1 = 0;// Start count at 0
         backgrounHandler.sendMessageDelayed(msgBack, 1000);
-
-
+        
     }
 
     @Override
